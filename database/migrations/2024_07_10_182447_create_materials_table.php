@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
+            $table->string('name');
+            $table->longText('description');
+            $table->string('number');
             $table->timestamps();
         });
     }

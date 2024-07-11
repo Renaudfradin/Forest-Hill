@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\course;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class CoursePolicy
 {
@@ -13,7 +12,7 @@ class CoursePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +20,7 @@ class CoursePolicy
      */
     public function view(User $user, course $course): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +28,7 @@ class CoursePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +36,7 @@ class CoursePolicy
      */
     public function update(User $user, course $course): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +44,7 @@ class CoursePolicy
      */
     public function delete(User $user, course $course): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +52,7 @@ class CoursePolicy
      */
     public function restore(User $user, course $course): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +60,6 @@ class CoursePolicy
      */
     public function forceDelete(User $user, course $course): bool
     {
-        //
+        return true;
     }
 }

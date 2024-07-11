@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\club;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class ClubPolicy
 {
@@ -13,7 +12,7 @@ class ClubPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +20,7 @@ class ClubPolicy
      */
     public function view(User $user, club $club): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +28,7 @@ class ClubPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +36,7 @@ class ClubPolicy
      */
     public function update(User $user, club $club): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +44,7 @@ class ClubPolicy
      */
     public function delete(User $user, club $club): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +52,7 @@ class ClubPolicy
      */
     public function restore(User $user, club $club): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +60,6 @@ class ClubPolicy
      */
     public function forceDelete(User $user, club $club): bool
     {
-        //
+        return true;
     }
 }

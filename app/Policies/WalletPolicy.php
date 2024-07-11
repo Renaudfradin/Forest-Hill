@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\wallet;
-use Illuminate\Auth\Access\Response;
 
 class WalletPolicy
 {
@@ -13,7 +12,7 @@ class WalletPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +20,7 @@ class WalletPolicy
      */
     public function view(User $user, wallet $wallet): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +28,7 @@ class WalletPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +36,7 @@ class WalletPolicy
      */
     public function update(User $user, wallet $wallet): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +44,7 @@ class WalletPolicy
      */
     public function delete(User $user, wallet $wallet): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +52,7 @@ class WalletPolicy
      */
     public function restore(User $user, wallet $wallet): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +60,6 @@ class WalletPolicy
      */
     public function forceDelete(User $user, wallet $wallet): bool
     {
-        //
+        return true;
     }
 }

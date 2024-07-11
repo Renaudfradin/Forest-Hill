@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('contremarques', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
+            $table->string('tile');
+            $table->string('npass');
+            //    $table->unsignedInteger('businesses_id')->nullable();
+            $table->string('reprise');
+            $table->string('typem');
+            //$table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

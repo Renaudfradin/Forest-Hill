@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\article;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class ArticlePolicy
 {
@@ -13,7 +12,7 @@ class ArticlePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +20,7 @@ class ArticlePolicy
      */
     public function view(User $user, article $article): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +28,7 @@ class ArticlePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +36,7 @@ class ArticlePolicy
      */
     public function update(User $user, article $article): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +44,7 @@ class ArticlePolicy
      */
     public function delete(User $user, article $article): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +52,7 @@ class ArticlePolicy
      */
     public function restore(User $user, article $article): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +60,6 @@ class ArticlePolicy
      */
     public function forceDelete(User $user, article $article): bool
     {
-        //
+        return true;
     }
 }

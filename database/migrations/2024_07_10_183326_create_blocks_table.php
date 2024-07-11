@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('blocks', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
+            $table->string('content');
             $table->timestamps();
         });
     }

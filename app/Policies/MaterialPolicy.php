@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\material;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class MaterialPolicy
 {
@@ -13,7 +12,7 @@ class MaterialPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +20,7 @@ class MaterialPolicy
      */
     public function view(User $user, material $material): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +28,7 @@ class MaterialPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +36,7 @@ class MaterialPolicy
      */
     public function update(User $user, material $material): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +44,7 @@ class MaterialPolicy
      */
     public function delete(User $user, material $material): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +52,7 @@ class MaterialPolicy
      */
     public function restore(User $user, material $material): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +60,6 @@ class MaterialPolicy
      */
     public function forceDelete(User $user, material $material): bool
     {
-        //
+        return true;
     }
 }

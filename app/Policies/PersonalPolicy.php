@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\personal;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class PersonalPolicy
 {
@@ -13,7 +12,7 @@ class PersonalPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +20,7 @@ class PersonalPolicy
      */
     public function view(User $user, personal $personal): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +28,7 @@ class PersonalPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +36,7 @@ class PersonalPolicy
      */
     public function update(User $user, personal $personal): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +44,7 @@ class PersonalPolicy
      */
     public function delete(User $user, personal $personal): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +52,7 @@ class PersonalPolicy
      */
     public function restore(User $user, personal $personal): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +60,6 @@ class PersonalPolicy
      */
     public function forceDelete(User $user, personal $personal): bool
     {
-        //
+        return true;
     }
 }

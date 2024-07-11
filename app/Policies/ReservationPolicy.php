@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\reservation;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class ReservationPolicy
 {
@@ -13,7 +12,7 @@ class ReservationPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +20,7 @@ class ReservationPolicy
      */
     public function view(User $user, reservation $reservation): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +28,7 @@ class ReservationPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -37,7 +36,7 @@ class ReservationPolicy
      */
     public function update(User $user, reservation $reservation): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -45,7 +44,7 @@ class ReservationPolicy
      */
     public function delete(User $user, reservation $reservation): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +52,7 @@ class ReservationPolicy
      */
     public function restore(User $user, reservation $reservation): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -61,6 +60,6 @@ class ReservationPolicy
      */
     public function forceDelete(User $user, reservation $reservation): bool
     {
-        //
+        return true;
     }
 }
