@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers\ContremarqueRelationManager;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -51,11 +52,9 @@ class UserResource extends Resource
                     ->sortable()
                     ->searchable(),
             ])
-            ->filters([
-                //
-            ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -68,7 +67,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ContremarqueRelationManager::class,
         ];
     }
 

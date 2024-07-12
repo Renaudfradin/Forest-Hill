@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('description');
-            $table->string('activity');
+            $table->json('activitys');
             $table->longText('planning');
             $table->string('adress');
             $table->string('location');

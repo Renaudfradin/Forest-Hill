@@ -16,10 +16,11 @@ return new class extends Migration
             $table->string('slug');
             $table->string('tile');
             $table->string('npass');
-            //    $table->unsignedInteger('businesses_id')->nullable();
-            $table->string('reprise');
+            $table->timestamp('reprise');
             $table->string('typem');
-            //$table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('business_id');
+            $table->unsignedInteger('subscription_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

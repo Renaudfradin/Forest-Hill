@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('content');
             $table->string('image')->nullable();
             $table->boolean('active');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

@@ -16,6 +16,8 @@ class WalletResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Gestion interne';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -45,13 +47,11 @@ class WalletResource extends Resource
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('slug')
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
-            ])
-            ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -62,13 +62,6 @@ class WalletResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

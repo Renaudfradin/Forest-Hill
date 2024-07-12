@@ -6,15 +6,19 @@ use App\Filament\Resources\BusinessResource\Pages;
 use App\Models\Business;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class BusinessResource extends Resource
 {
     protected static ?string $model = Business::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Gestion interne';
 
     public static function form(Form $form): Form
     {
@@ -23,7 +27,9 @@ class BusinessResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->translateLabel()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
                 Forms\Components\TextInput::make('slug')
                     ->translateLabel()
@@ -38,7 +44,7 @@ class BusinessResource extends Resource
                 Forms\Components\MarkdownEditor::make('description')
                     ->translateLabel()
                     ->required()
-                    ->maxLength(255),
+                    ->columnSpanFull(),
             ]);
     }
 

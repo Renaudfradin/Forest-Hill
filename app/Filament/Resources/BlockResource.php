@@ -16,6 +16,8 @@ class BlockResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Gestion interne';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -42,6 +44,7 @@ class BlockResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

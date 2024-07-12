@@ -18,6 +18,8 @@ class ActivityResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Gestion externe';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -51,14 +53,11 @@ class ActivityResource extends Resource
 
                 Tables\Columns\TextColumn::make('slug')
                     ->translateLabel()
-                    ->boolean()
                     ->sortable(),
-            ])
-            ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -66,13 +65,6 @@ class ActivityResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

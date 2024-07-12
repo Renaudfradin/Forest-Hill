@@ -16,6 +16,8 @@ class MaterialResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Gestion interne';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -34,11 +36,11 @@ class MaterialResource extends Resource
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
+
                 Forms\Components\TextInput::make('number')
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
-
             ]);
     }
 
@@ -50,6 +52,7 @@ class MaterialResource extends Resource
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('slug')
                     ->translateLabel()
                     ->sortable()
@@ -65,6 +68,7 @@ class MaterialResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -72,13 +76,6 @@ class MaterialResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

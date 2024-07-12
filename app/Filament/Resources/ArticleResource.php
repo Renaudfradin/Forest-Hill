@@ -18,6 +18,8 @@ class ArticleResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Gestion interne';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -25,7 +27,7 @@ class ArticleResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->translateLabel()
                     ->required()
-                    ->maxLength(150)
+                    ->maxLength(255)
                     ->live(onBlur: true)
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
 
@@ -38,19 +40,10 @@ class ArticleResource extends Resource
                     ->required()
                     ->columnSpanFull(),
 
-                // Forms\Components\Select::make('user_id')
-                //     ->relationship('user', 'email')
-                //     ->required()
-                //     ->searchable()
-                //     ->preload(false)
-                //     ->native(false),
-
-                // Forms\Components\Select::make('category_id')
-                //     ->relationship('category', 'name')
-                //     ->required()
-                //     ->searchable()
-                //     ->preload(false)
-                //     ->native(false),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'email')
+                    ->required()
+                    ->native(false),
 
                 Forms\Components\Toggle::make('active')
                     ->translateLabel()
@@ -79,11 +72,9 @@ class ArticleResource extends Resource
                     ->boolean()
                     ->sortable(),
             ])
-            ->filters([
-                //
-            ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -91,13 +82,6 @@ class ArticleResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

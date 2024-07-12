@@ -6,15 +6,19 @@ use App\Filament\Resources\ClubResource\Pages;
 use App\Models\Club;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class ClubResource extends Resource
 {
     protected static ?string $model = Club::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationGroup = 'Gestion externe';
 
     public static function form(Form $form): Form
     {
@@ -23,35 +27,47 @@ class ClubResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->translateLabel()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->live(onBlur: true)
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
+
                 Forms\Components\TextInput::make('slug')
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('description')
+
+                Forms\Components\MarkdownEditor::make('description')
                     ->translateLabel()
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('activity')
-                    ->translateLabel()
+                    ->columnSpanFull(),
+
+                Forms\Components\Select::make('activitys')
+                    ->relationship('activitys', 'title')
+                    //->multiple() @todo corection multiple ??
+                    ->preload()
                     ->required()
-                    ->maxLength(255),
+                    ->native(false),
+
                 Forms\Components\TextInput::make('planning')
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
+
                 Forms\Components\TextInput::make('adress')
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
+
                 Forms\Components\TextInput::make('location')
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
+
                 Forms\Components\TextInput::make('location_detail')
                     ->translateLabel()
                     ->required()
                     ->maxLength(255),
+
                 Forms\Components\TextInput::make('hourly')
                     ->translateLabel()
                     ->required()
@@ -67,16 +83,15 @@ class ClubResource extends Resource
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('slug')
                     ->translateLabel()
                     ->sortable()
                     ->searchable(),
             ])
-            ->filters([
-                //
-            ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
