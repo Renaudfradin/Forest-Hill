@@ -17,12 +17,7 @@ start docker
 ./vendor/bin/sail up
 ```
 
-run migartion
-```sh
-./vendor/bin/sail artisan migrate
-```
-
-execute factory
+execute migration and seeder
 ```sh
 ./vendor/bin/sail artisan migrate:fresh --seed
 ```
