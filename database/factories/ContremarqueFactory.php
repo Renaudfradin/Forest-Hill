@@ -2,22 +2,23 @@
 
 namespace Database\Factories;
 
+use App\Models\Business;
+use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\contremarque>
- */
 class ContremarqueFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'tile' => fake()->name(),
+            'slug' => fake()->slug(),
+            'npass' => fake()->randomDigit(),
+            'reprise' => fake()->dateTime(),
+            'typem' => fake()->name(),
+            'business_id' => Business::class,
+            'subscription_id' => Subscription::class,
+            'user_id' => User::class,
         ];
     }
 }
